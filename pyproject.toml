@@ -1,0 +1,17 @@
+[project]
+name = "push-over"
+version = "0.1.0"
+description = "Push Over — multi-path Android secure wrap (Toolaid)"
+requires-python = ">=3.11"
+dependencies = ["click>=8.1", "rich>=13.9"]
+
+[project.scripts]
+pushover = "pushover.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pushover*"]
