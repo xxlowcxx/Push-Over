@@ -1,29 +1,35 @@
 # Push Over
 
-**Toolaid · Owner LowC · Powered by Siren Logix**
+Multi-path Android wrap. Pull what the device allows, quarantine it, then follow a clean-OS playbook.
 
-> Multi-path Android service: detect → pull what the device allows → **secure wrap** → clean-OS playbook.
-> **Not an FRP bypass.** Owner/account paths stay proper.
+| | |
+| --- | --- |
+| What it is | Detect, pull, secure wrap, playbook. The Android pack inside Cooler is this same work. |
+| What it is not | An FRP bypass. A Google-account skip. Phoenix, which keeps originals. Burn Box, which deletes them. |
+| Status | The modes below are the current body. Code comes back in a later push. |
+| Owner | LowC. Powered by Siren Logix. Toolaid. |
+
+## Mission
+
+Repush the code and finish the wrap. Owner and account paths stay proper.
 
 ## Modes
 
 | Mode | When | What it does |
 |------|------|----------------|
-| `auto` | Default | Detect USB and pick safest path |
-| `owner` | You have Google/OEM account | Checklist to clear FRP properly, then pull |
-| `mtp` | Phone in MTP | Quarantine reachable files into wrap vault |
+| `auto` | Default | Detect USB and pick the safest path |
+| `owner` | You have the Google or OEM account | Checklist to clear FRP properly, then pull |
+| `mtp` | Phone in MTP | Quarantine reachable files into the wrap vault |
 | `adb` | Debugging authorized | Deeper pull via adb |
-| `download` | Samsung Download / fastboot | Stock flash **playbook** (expect wipe) |
+| `download` | Samsung Download or fastboot | Stock flash playbook. Expect a wipe. |
 
 ## Secure wrap
 
-Pulled files get:
-
 1. Quarantine copy under `data/quarantine/<case>/`
 2. SHA-256 manifest
-3. Optional **PhoenixWrap** rebirth (if installed)
-4. Optional **Burn Box** upload (if `:5000` is up)
-5. Case JSON + audit log
+3. Optional PhoenixWrap rebirth, if it is installed
+4. Optional Burn Box upload, if it is up
+5. Case JSON and an audit log
 
 ## Quick start
 
@@ -36,6 +42,4 @@ python3 -m venv .venv
 ./bin/pushover auto --tech lowc --note "owned repair"
 ```
 
-## Hard line
-
-No FRP/Google account skip. Flash = official playbooks for **owned** devices. Full pull only when the device **exposes** files.
+No FRP or Google-account skip. A flash uses the official playbook for a device you own. A full pull happens only when the device exposes the files.
